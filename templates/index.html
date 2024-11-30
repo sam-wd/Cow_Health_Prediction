@@ -63,7 +63,7 @@
 </head>
 <body>
     <div class="form-container">
-        <img src="{{ url_for('static', filename='images/Cow.jpeg') }}" alt="Cute Cow" height="300" width="500">
+        <img class="cow-graphic" src="{{ url_for('static', filename='images/Cow.jpeg') }}" alt="Cute Cow">
         <h1 class="form-title">Predicting Cow Health</h1>
         <form action="/predict" method="post">
             <!-- 9 Textboxes -->
