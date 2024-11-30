@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cow Health Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fdf6e3;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .cow-graphic {
+            width: 100px;
+            height: auto;
+            margin: 0 auto 20px;
+        }
+
+        .form-title {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .submit-button {
+            background-color: #8bc34a;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .submit-button:hover {
+            background-color: #7cb342;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <img src="{{ url_for('static', filename='images/Cow.jpeg') }}" alt="Cute Cow" height="300" width="500">
+        <h1 class="form-title">Predicting Cow Health</h1>
+        <form action="/predict" method="post">
+            <!-- 9 Textboxes -->
+            <div class="form-group">
+                <input type="number" step="0.01" name="body_temperature" placeholder="body_temperature" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="breed_type" placeholder="breed_type" required>
+            </div>
+            <div class="form-group">
+                <input type="number" step="0.01"  name="milk_production" placeholder="milk_production" required>
+            </div>
+            <div class="form-group">
+                <input type="number" step="0.01" name="repiratory_rate" placeholder="repiratory_rate" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="walking_capacity" placeholder="walking_capacity" required>
+            </div>
+            <div class="form-group">
+                <input type="number" step="0.01" name="sleeping_duration" placeholder="sleeping_duration" required>
+            </div>
+            <div class="form-group">
+                <input type="number" name="heart_rate" placeholder="heart_rate" required>
+            </div>
+            <div class="form-group">
+                <input type="number" step="0.01"  name="ruminating" placeholder="ruminating">
+            </div>
+            <div class="form-group">
+                <input type="number"step="0.01"  name="rumen_fill" placeholder="rumen_fill" required>
+            </div>
+            <!-- Submit Button -->
+            <button type="submit" value="Predict" class="submit-button">Predict</button>
+        </form>
+        {% if prediction_text %}
+        <div class="result" style="font-size: 1.5rem; margin-top: 20px; color:#8bc34a">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
